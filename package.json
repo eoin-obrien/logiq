@@ -1,13 +1,13 @@
 {
-	"name": "unicorn-fun",
+	"name": "logiq",
 	"version": "0.0.0",
-	"description": "My awesome module",
+	"description": "Awesome logical and bitwise operators with support for TypedArrays",
 	"license": "MIT",
-	"repository": "YOUR-GITHUB-USERNAME/unicorn-fun",
+	"repository": "eoin-obrien/logiq",
 	"author": {
-		"name": "YOUR NAME",
-		"email": "YOUR EMAIL",
-		"url": "YOUR WEBSITE"
+		"name": "Eoin O'Brien",
+		"email": "eoinobrien910@gmail.com",
+		"url": "https://eoin.ai"
 	},
 	"type": "module",
 	"exports": "./index.js",
