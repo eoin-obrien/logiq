@@ -1,0 +1,7 @@
+{
+	"extends": "@sindresorhus/tsconfig/tsconfig.json",
+	"include": ["src", "types"],
+	"compilerOptions": {
+		"outDir": "dist"
+	}
+}
