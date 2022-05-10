@@ -13,7 +13,7 @@ const truthTable = test.macro(
 	},
 );
 
-test('not', t => {
+test('not', (t) => {
 	t.is(logical.not(true), false);
 	t.is(logical.not(false), true);
 });

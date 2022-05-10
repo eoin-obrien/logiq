@@ -4,7 +4,11 @@ import {typedArray} from '../src/index.js';
 import {BinaryConnective} from '../src/utils.js';
 
 const truthTable = test.macro(
-	(t, connective: BinaryConnective<TypedArray, Uint8Array>, table: Uint8Array) => {
+	(
+		t,
+		connective: BinaryConnective<TypedArray, Uint8Array>,
+		table: Uint8Array,
+	) => {
 		const p = Uint8Array.of(255, 255, 0, 0);
 		const q = Uint8Array.of(255, 0, 255, 0);
 		t.deepEqual(connective(p, q), table);
@@ -13,7 +17,7 @@ const truthTable = test.macro(
 	},
 );
 
-test('not', t => {
+test('not', (t) => {
 	const p = Uint8Array.of(255, 0);
 	t.deepEqual(typedArray.not(p), Uint8Array.of(0, 255));
 	t.deepEqual(p, Uint8Array.of(255, 0), 'operands must be unchanged');

@@ -15,9 +15,14 @@ export interface Connectives<T, R> {
 	xnor: BinaryConnective<T, R>;
 }
 
-export type PresetConnectives<T, R> = SetRequired<Partial<Connectives<T, R>>, 'not' | 'and' | 'or'>;
+export type PresetConnectives<T, R> = SetRequired<
+	Partial<Connectives<T, R>>,
+	'not' | 'and' | 'or'
+>;
 
-export function makeConnectives<T, R extends T>(presets: PresetConnectives<T, R>): Connectives<T, R> {
+export function makeConnectives<T, R extends T>(
+	presets: PresetConnectives<T, R>,
+): Connectives<T, R> {
 	const {not, and, or} = presets;
 	const xor = presets.xor ?? ((p, q) => and(or(not(p), not(q)), or(p, q)));
 	const imply = presets.imply ?? ((p, q) => or(not(p), q));

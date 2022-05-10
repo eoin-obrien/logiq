@@ -19,7 +19,8 @@
 		"test": "xo && ava",
 		"release": "np",
 		"build": "del-cli dist && tsc",
-		"prepare": "npm run build"
+		"prepare": "npm run build",
+		"format": "xo --fix"
 	},
 	"files": [
 		"dist/"
@@ -36,6 +37,9 @@
 			"--loader=esbuild-node-loader",
 			"--experimental-specifier-resolution=node"
 		]
+	},
+	"xo": {
+		"prettier": true
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "^2.0.0",
