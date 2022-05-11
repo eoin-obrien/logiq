@@ -10,13 +10,16 @@ function applyBitwise(
 	const pBytes = new Uint8Array(p);
 	const qBytes = new Uint8Array(q);
 
-	if (pBytes.length !== qBytes.length) {
-		throw new Error('Expected operands to be of equal byte length');
+	if (pBytes.length === 0 || qBytes.length === 0) {
+		throw new Error('Operands must have length > 0');
 	}
 
-	const result = new Uint8Array(pBytes.length);
-	for (const [i, pByte] of pBytes.entries()) {
-		result[i] = connective(pByte, qBytes[i]!);
+	const length = Math.max(pBytes.length, qBytes.length);
+	const result = new Uint8Array(length);
+	for (let i = 0; i < result.length; i++) {
+		const pByte = pBytes[i % pBytes.length]!;
+		const qByte = qBytes[i % qBytes.length]!;
+		result[i] = connective(pByte, qByte);
 	}
 
 	return result;
