@@ -27,8 +27,26 @@
 		"dist/"
 	],
 	"keywords": [
-		"unicorn",
-		"fun"
+		"logic",
+		"bitwise",
+		"gate",
+		"gates",
+		"connective",
+		"connectives",
+		"operator",
+		"operators",
+		"typed-array",
+		"number",
+		"bigint",
+		"not",
+		"and",
+		"nand",
+		"or",
+		"nor",
+		"xor",
+		"xnor",
+		"imply",
+		"nimply"
 	],
 	"ava": {
 		"extensions": {
