@@ -1,7 +1,9 @@
 # logiq
 
+[![CI](https://github.com/eoin-obrien/logiq/actions/workflows/main.yml/badge.svg)](https://github.com/eoin-obrien/logiq/actions/workflows/main.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8dee5c13c8b4c346be9e/maintainability)](https://codeclimate.com/github/eoin-obrien/logiq/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8dee5c13c8b4c346be9e/test_coverage)](https://codeclimate.com/github/eoin-obrien/logiq/test_coverage)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 
 > Awesome logical and bitwise operators with support for `BigInt` and `TypedArray`
 
