@@ -34,6 +34,9 @@
 		"extensions": {
 			"ts": "module"
 		},
+		"environmentVariables": {
+			"NODE_NO_WARNINGS": "1"
+		},
 		"nodeArguments": [
 			"--loader=esbuild-node-loader",
 			"--experimental-specifier-resolution=node"
