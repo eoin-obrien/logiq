@@ -2,29 +2,32 @@ export type UnaryConnective<T, R> = (p: T) => R;
 export type BinaryConnective<T, R> = (p: T, q: T) => R;
 export type VariadicBinaryConnective<T, R> = (p: T, q: T, ...args: T[]) => R;
 
-export interface Connectives<T, R> {
-	not: UnaryConnective<T, R>;
-	and: VariadicBinaryConnective<T, R>;
-	or: VariadicBinaryConnective<T, R>;
-	imply: VariadicBinaryConnective<T, R>;
-	xor: VariadicBinaryConnective<T, R>;
-	nand: VariadicBinaryConnective<T, R>;
-	nor: VariadicBinaryConnective<T, R>;
-	nimply: VariadicBinaryConnective<T, R>;
-	xnor: VariadicBinaryConnective<T, R>;
-}
+type UnaryConnectiveNames = 'not';
+type BinaryConnectiveNames =
+	| 'and'
+	| 'or'
+	| 'imply'
+	| 'xor'
+	| 'nand'
+	| 'nor'
+	| 'nimply'
+	| 'xnor';
 
-export interface MakeConnectivesArgs<T, R> {
-	not: UnaryConnective<T, R>;
-	and: BinaryConnective<T, R>;
-	or: BinaryConnective<T, R>;
-	imply?: BinaryConnective<T, R>;
-	xor?: BinaryConnective<T, R>;
-	nand?: BinaryConnective<T, R>;
-	nor?: BinaryConnective<T, R>;
-	nimply?: BinaryConnective<T, R>;
-	xnor?: BinaryConnective<T, R>;
-}
+type UnaryConnectives<T, R> = {
+	[k in UnaryConnectiveNames]: UnaryConnective<T, R>;
+};
+
+type BinaryConnectives<T, R> = {
+	[k in BinaryConnectiveNames]: BinaryConnective<T, R>;
+};
+
+type VariadicBinaryConnectives<T, R> = {
+	[k in BinaryConnectiveNames]: VariadicBinaryConnective<T, R>;
+};
+
+export interface Connectives<T, R>
+	extends UnaryConnectives<T, R>,
+		VariadicBinaryConnectives<T, R> {}
 
 function toVariadic<T, R extends T>(
 	connective: BinaryConnective<T, R>,
@@ -40,6 +43,11 @@ function toVariadic<T, R extends T>(
 		return result;
 	};
 }
+
+export interface MakeConnectivesArgs<T, R>
+	extends UnaryConnectives<T, R>,
+		Pick<BinaryConnectives<T, R>, 'and' | 'or'>,
+		Partial<Omit<BinaryConnectives<T, R>, 'and' | 'or'>> {}
 
 export function makeConnectives<T, R extends T>(
 	args: MakeConnectivesArgs<T, R>,
