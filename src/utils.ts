@@ -45,12 +45,12 @@ export function makeConnectives<T, R extends T>(
 	presets: PresetConnectives<T, R>,
 ): Connectives<T, R> {
 	const {not, and, or} = presets;
-	const xor = (p: T, q: T) => and(or(not(p), not(q)), or(p, q));
+	const xor = (p: T, q: T) => and(or(p, q), or(not(p), not(q)));
 	const imply = (p: T, q: T) => or(not(p), q);
 	const nand = (p: T, q: T) => not(and(p, q));
 	const nor = (p: T, q: T) => not(or(p, q));
-	const xnor = (p: T, q: T) => not(xor(p, q));
-	const nimply = (p: T, q: T) => not(imply(p, q));
+	const xnor = (p: T, q: T) => or(and(p, q), and(not(p), not(q)));
+	const nimply = (p: T, q: T) => and(p, not(q));
 
 	return {
 		not,
