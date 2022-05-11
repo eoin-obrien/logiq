@@ -1,21 +1,23 @@
 import {makeConnectives} from './utils.js';
 
-function not(p: number | bigint): bigint {
+type BigIntValue = Parameters<BigIntConstructor>[0];
+
+function not(p: BigIntValue): bigint {
 	/* eslint-disable-next-line no-bitwise */
 	return ~BigInt(p);
 }
 
-function and(p: number | bigint, q: number | bigint): bigint {
+function and(p: BigIntValue, q: BigIntValue): bigint {
 	/* eslint-disable-next-line no-bitwise */
 	return BigInt(p) & BigInt(q);
 }
 
-function or(p: number | bigint, q: number | bigint): bigint {
+function or(p: BigIntValue, q: BigIntValue): bigint {
 	/* eslint-disable-next-line no-bitwise */
 	return BigInt(p) | BigInt(q);
 }
 
-function xor(p: number | bigint, q: number | bigint): bigint {
+function xor(p: BigIntValue, q: BigIntValue): bigint {
 	/* eslint-disable-next-line no-bitwise */
 	return BigInt(p) ^ BigInt(q);
 }
