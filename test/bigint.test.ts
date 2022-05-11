@@ -18,3 +18,6 @@ test('nand', truthTable, bigint.nand, -0b1001n);
 test('nor', truthTable, bigint.nor, -0b1111n);
 test('xnor', truthTable, bigint.xnor, -0b0111n);
 test('nimply', truthTable, bigint.nimply, 0b0100n);
+test('variadic', (t) => {
+	t.is(bigint.and(1, 1, 1), 1n);
+});

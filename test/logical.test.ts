@@ -25,3 +25,6 @@ test('nand', truthTable, logical.nand, [false, true, true, true]);
 test('nor', truthTable, logical.nor, [false, false, false, true]);
 test('xnor', truthTable, logical.xnor, [true, false, false, true]);
 test('nimply', truthTable, logical.nimply, [false, true, false, false]);
+test('variadic', (t) => {
+	t.is(logical.and(1, 1, 1), true);
+});

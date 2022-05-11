@@ -30,3 +30,7 @@ test('nand', truthTable, typedArray.nand, Uint8Array.of(0, 255, 255, 255));
 test('nor', truthTable, typedArray.nor, Uint8Array.of(0, 0, 0, 255));
 test('xnor', truthTable, typedArray.xnor, Uint8Array.of(255, 0, 0, 255));
 test('nimply', truthTable, typedArray.nimply, Uint8Array.of(0, 255, 0, 0));
+test('variadic', (t) => {
+	const p = Uint8Array.of(1);
+	t.deepEqual(typedArray.and(p, p, p), p);
+});
