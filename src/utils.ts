@@ -14,7 +14,7 @@ export interface Connectives<T, R> {
 	xnor: VariadicBinaryConnective<T, R>;
 }
 
-export interface PresetConnectives<T, R> {
+export interface MakeConnectivesArgs<T, R> {
 	not: UnaryConnective<T, R>;
 	and: BinaryConnective<T, R>;
 	or: BinaryConnective<T, R>;
@@ -42,9 +42,9 @@ function toVariadic<T, R extends T>(
 }
 
 export function makeConnectives<T, R extends T>(
-	presets: PresetConnectives<T, R>,
+	args: MakeConnectivesArgs<T, R>,
 ): Connectives<T, R> {
-	const {not, and, or} = presets;
+	const {not, and, or} = args;
 	const xor = (p: T, q: T) => and(or(p, q), or(not(p), not(q)));
 	const imply = (p: T, q: T) => or(not(p), q);
 	const nand = (p: T, q: T) => not(and(p, q));
@@ -56,11 +56,11 @@ export function makeConnectives<T, R extends T>(
 		not,
 		and: toVariadic(and),
 		or: toVariadic(or),
-		xor: toVariadic(presets.xor ?? xor),
-		imply: toVariadic(presets.imply ?? imply),
-		nand: toVariadic(presets.nand ?? nand),
-		nor: toVariadic(presets.nor ?? nor),
-		xnor: toVariadic(presets.xnor ?? xnor),
-		nimply: toVariadic(presets.nimply ?? nimply),
+		xor: toVariadic(args.xor ?? xor),
+		imply: toVariadic(args.imply ?? imply),
+		nand: toVariadic(args.nand ?? nand),
+		nor: toVariadic(args.nor ?? nor),
+		xnor: toVariadic(args.xnor ?? xnor),
+		nimply: toVariadic(args.nimply ?? nimply),
 	};
 }
