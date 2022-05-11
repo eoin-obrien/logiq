@@ -1,5 +1,8 @@
 # logiq
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/8dee5c13c8b4c346be9e/maintainability)](https://codeclimate.com/github/eoin-obrien/logiq/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8dee5c13c8b4c346be9e/test_coverage)](https://codeclimate.com/github/eoin-obrien/logiq/test_coverage)
+
 > Awesome logical and bitwise operators with support for `BigInt` and `TypedArray`
 
 ## Install
