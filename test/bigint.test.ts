@@ -1,11 +1,12 @@
 import test from 'ava';
 import {bigint} from '../src/index.js';
+import {BinaryConnective} from '../src/utils.js';
 
-type Connective = (p: bigint, q: bigint) => bigint;
-
-const truthTable = test.macro((t, connective: Connective, table: bigint) => {
-	t.is(connective(0b1100n, 0b1010n), table);
-});
+const truthTable = test.macro(
+	(t, connective: BinaryConnective<bigint, bigint>, table: bigint) => {
+		t.is(connective(0b1100n, 0b1010n), table);
+	},
+);
 
 test('not', (t) => {
 	t.is(bigint.not(0b10), -0b11n);

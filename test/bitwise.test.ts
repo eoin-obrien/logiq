@@ -1,11 +1,12 @@
 import test from 'ava';
 import {bitwise} from '../src/index.js';
+import {BinaryConnective} from '../src/utils.js';
 
-type Connective = (p: number, q: number) => number;
-
-const truthTable = test.macro((t, connective: Connective, table: number) => {
-	t.is(connective(0b1100, 0b1010), table);
-});
+const truthTable = test.macro(
+	(t, connective: BinaryConnective<number, number>, table: number) => {
+		t.is(connective(0b1100, 0b1010), table);
+	},
+);
 
 test('not', (t) => {
 	t.is(bitwise.not(0b10), -0b11);

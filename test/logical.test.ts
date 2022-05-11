@@ -1,11 +1,11 @@
 import test from 'ava';
 import {logical} from '../src/index.js';
+import {BinaryConnective} from '../src/utils.js';
 
-type Connective = (p: boolean, q: boolean) => boolean;
 type TruthTable = [tt: boolean, tf: boolean, ft: boolean, ff: boolean];
 
 const truthTable = test.macro(
-	(t, connective: Connective, table: TruthTable) => {
+	(t, connective: BinaryConnective<boolean, boolean>, table: TruthTable) => {
 		t.is(connective(true, true), table[0]);
 		t.is(connective(true, false), table[1]);
 		t.is(connective(false, true), table[2]);
