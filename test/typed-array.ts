@@ -14,6 +14,14 @@ const truthTable = test.macro(
 		t.deepEqual(connective(p, q), table);
 		t.deepEqual(p, Uint8Array.of(255, 255, 0, 0), 'operands must be unchanged');
 		t.deepEqual(q, Uint8Array.of(255, 0, 255, 0), 'operands must be unchanged');
+
+		t.throws(
+			() => connective(Uint8Array.of(1), Uint8Array.of()),
+			{
+				message: 'Expected operands to be of equal byte length',
+			},
+			'throws for mismatched lengths',
+		);
 	},
 );
 
