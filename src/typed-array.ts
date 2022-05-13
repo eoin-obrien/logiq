@@ -2,13 +2,24 @@ import {TypedArray} from 'type-fest';
 import {BinaryConnective, makeConnectives} from './utils.js';
 import {bitwise} from './index.js';
 
+/**
+ * Converts any `TypedArray` to a `Uint8Array`, preserving offset and length.
+ */
+function toBytes(p: TypedArray): Uint8Array {
+	return new Uint8Array(p.buffer, p.byteOffset, p.byteLength);
+}
+
+/**
+ * Applies a binary connective to two `TypedArrays` in bitwise fashion.
+ */
 function applyBitwise(
 	connective: BinaryConnective<number, number>,
 	p: TypedArray,
 	q: TypedArray,
 ) {
-	const pBytes = new Uint8Array(p);
-	const qBytes = new Uint8Array(q);
+	// Work with bytes to avoid issues with non-integers and endianness
+	const pBytes = toBytes(p);
+	const qBytes = toBytes(q);
 
 	if (pBytes.length === 0 || qBytes.length === 0) {
 		throw new Error('Operands must have length > 0');
@@ -26,7 +37,7 @@ function applyBitwise(
 }
 
 function not(p: TypedArray): Uint8Array {
-	return new Uint8Array(p).map((value) => bitwise.not(value));
+	return toBytes(p).map((value) => bitwise.not(value));
 }
 
 function and(p: TypedArray, q: TypedArray): Uint8Array {

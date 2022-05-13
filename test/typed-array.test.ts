@@ -3,13 +3,18 @@ import {TypedArray} from 'type-fest';
 import {typedArray} from '../src/index.js';
 import {BinaryConnective} from '../src/utils.js';
 
+const buffer = new ArrayBuffer(8);
+const view = new DataView(buffer);
+view.setInt32(0, 0x01_01_01_01);
+view.setInt32(4, 0xff_ff_00_00);
+
 const truthTable = test.macro(
 	(
 		t,
 		connective: BinaryConnective<TypedArray, Uint8Array>,
 		table: Uint8Array,
 	) => {
-		const p = Uint8Array.of(255, 255, 0, 0);
+		const p = new Uint32Array(buffer, 4, 1); // Check offsets work correctly
 		const q = Uint8Array.of(255, 0); // Mismatched lengths will be repeated
 		t.deepEqual(connective(p, q), table);
 		t.throws(() => connective(Uint8Array.of(1), Uint8Array.of()), {
