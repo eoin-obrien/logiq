@@ -68,7 +68,7 @@
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "3.0.1",
-		"ava": "4.3.0",
+		"ava": "4.3.1",
 		"c8": "7.11.3",
 		"del-cli": "4.0.1",
 		"esbuild-node-loader": "0.8.0",
