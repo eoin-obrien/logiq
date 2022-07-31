@@ -73,7 +73,7 @@
 		"del-cli": "4.0.1",
 		"esbuild-node-loader": "0.8.0",
 		"np": "7.6.2",
-		"npm-check-updates": "16.0.3",
+		"npm-check-updates": "16.0.4",
 		"typescript": "4.7.4",
 		"xo": "0.49.0"
 	}
