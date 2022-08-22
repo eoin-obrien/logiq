@@ -64,7 +64,7 @@
 		"prettier": true
 	},
 	"dependencies": {
-		"type-fest": "2.18.1"
+		"type-fest": "2.19.0"
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "3.0.1",
